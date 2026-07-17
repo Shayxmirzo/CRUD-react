@@ -1,17 +1,17 @@
 import useGetData from "../hooks/useGetData"
 
-function TeacherPage() {
+function Employee() {
   const {data: teachers, loading} = useGetData("teachers");
   if(loading){
     return(
-      <div>Loading teachers...</div>
+      <div>Loading employees...</div>
     )
   }
   return (
     <div className="">
       <div className="p-5 flex gap-5">
         <div className="bg-[white] w-full rounded-[15px] p-5">
-          <p className="font-medium text-[18px]">Overall number of teachers: <br /> <span className="text-[30px] text-[green] font-bold">{teachers.length}</span></p>
+          <p className="font-medium text-[18px]">Overall number of employees: <br /> <span className="text-[30px] text-[green] font-bold">{teachers.length}</span></p>
         </div>
         <div className="bg-[white] w-full rounded-[15px] p-5">
             <p className="font-medium text-[18px]">Overall number of subjects: <br /> <span className="text-[30px] text-[blue] font-bold">{new Set(teachers?.map((el) =>(el.subject))).size}</span></p>
@@ -39,4 +39,4 @@ function TeacherPage() {
   )
 }
 
-export default TeacherPage
+export default Employee

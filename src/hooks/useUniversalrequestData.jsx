@@ -58,3 +58,20 @@ export const patchData = async (endpoint, id, body = {}) => {
     throw err;
   }
 };
+export const deleteData = async (endpoint, id) => {
+  const controller = new AbortController();
+
+  try {
+    const res = await axios.delete(
+      `${BASE_URL}/${endpoint}/${id}`,
+      {
+        signal: controller.signal,
+      }
+    );
+
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

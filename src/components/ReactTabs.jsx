@@ -9,6 +9,8 @@ export default function LabTabs({
   teachers,
   students,
   handleDelete,
+  handleEdit,
+   setStudentShowForm,
 }) {
   const [value, setValue] = React.useState("1");
 
@@ -44,7 +46,7 @@ export default function LabTabs({
               <p className="text-[gray]">{el.subject}</p>
               </div>
               <div className="flex gap-4">
-                <button className="px-4 py-2 rounded-xl bg-[blue] text-white font-bold text-[20px]">Edit</button>
+                <button onClick={() => handleEdit(el)} className="px-4 py-2 rounded-xl bg-[blue] text-white font-bold text-[20px]">Edit</button>
                 <button onClick={() => handleDelete(el.id)} className="px-4 py-2 rounded-xl bg-[red] text-white font-bold text-[20px]">Delete</button>
               </div>
             </div>
@@ -55,8 +57,12 @@ export default function LabTabs({
       ))}
           </div>
     </div></TabPanel>
-        <TabPanel value="2"><div className="flex flex-col gap-3 ">
-      {students.map((el) =>(
+        <TabPanel value="2"><div className="flex flex-col gap-6 ">
+          <div className="flex">
+            <span className=''><button onClick={() => setStudentShowForm(true)} className='px-5 py-3 bg-[blue] text-[white] cursor-pointer font-bold text-[20px] rounded-[15px] duration-400 hover:bg-[black]'>Add student +</button></span>
+          </div>
+          <div className="flex flex-col gap-3">
+            {students.map((el) =>(
         <div >
           <div className="h-20 w-full border flex px-3 items-center  border-[gray] rounded-[15px] bg-[white]" key={el.id}>
             <div className="flex items-center gap-3">
@@ -72,6 +78,8 @@ export default function LabTabs({
         </div>
         
       ))}
+          </div>
+      
     </div></TabPanel>
       </TabContext>
     </Box>
